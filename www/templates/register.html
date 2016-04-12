@@ -1,0 +1,30 @@
+<ion-view view-title="Register" ng-controller="RegisterCtrl as controller">
+	<ion-content>
+<div><p>Are you a ice cream truck owner? <b>Click here</b> to register</p></div>
+
+<div class="list">
+   <label class="item item-input item-stacked-label padding">
+   <span class="input-label">First Name</span>
+   <input type="text" placeholder="First Name" ng-model="controller.FirstName">
+   </label>
+
+   <label class="item item-input item-stacked-label padding">
+   <span class="input-label">Last Name</span>
+   <input type="text" placeholder="Last Name" ng-model="controller.LastName">
+   </label>
+      <label class="item item-input item-stacked-label padding">
+   <span class="input-label">Email</span>
+   <input type="text" placeholder="Email" ng-model="controller.Email">
+   </label>
+      <label class="item item-input item-stacked-label padding">
+   <span class="input-label">Password</span>
+   <input type="text" placeholder="Password" ng-model="controller.Password">
+   </label>
+
+<button class="button button-block button-calm" ng-click = "register()">Create Account </button>
+
+
+</div>
+</ion-content>
+
+</ion-view>

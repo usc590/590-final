@@ -1,0 +1,27 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{menu.name}}">
+<!-- <button side="left">
+ <a class="button button-small icon ion-android-arrow-back" href="#/tab/menus">Back</a>
+</button>  -->
+<ion-nav-buttons side="right">
+  <a class="button button-small icon ion-ios-compose-outline" href="#/tab/eidtItem">Edit</a>
+</ion-nav-buttons> 
+  <ion-content class="padding">
+    <img ng-src="{{menu.face}}" style="width: 64px; height: 64px">
+    <p>
+      Description: {{menu.description}} <br>
+      Unit Price: {{menu.lastText}} <br>
+      Quantity: <input type="number" placeholder="1">
+      Total Price: 
+      <button class="button-block" icon="ion-android-bus">Add to Cart </button>
+
+    </p>
+
+  </ion-content>
+
+</ion-view>

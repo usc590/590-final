@@ -1,0 +1,30 @@
+<ion-view view-title="Sign in" ng-controller="SigninCtrl as controller">
+	<ion-content>
+
+<div class="list">
+   <label class="item item-input item-stacked-label">
+   <span class="input-label">Email</span>
+   <input type="text" placeholder="Email" ng-model = "controller.Email">
+   </label>
+
+   <label class="item item-input item-stacked-label">
+   <span class="input-label">Password</span>
+   <input type="text" placeholder="Password" ng-model = "controller.Password">
+   </label>
+</div>
+
+<button class="button button-block button-calm" ng-click = "login()">
+  Sign In
+</button>
+
+         <p style="text-align: center; color: grey; font-family: 'Comic Sans MS', cursive, sans-serif" ui-sref="register">
+            Don't have an account? <b>Sign up.</b>
+         </p>
+            	</div>
+               <div>
+                     <p style="text-align: center; color: grey; font-family: 'Comic Sans MS', cursive, sans-serif">
+            Forgot password? <b>Click here.</b>
+         </p>
+</ion-content>
+
+</ion-view>
