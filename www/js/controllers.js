@@ -3,6 +3,8 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope) {})
 
+.controller('Location2Ctrl', function($scope) {})
+
 .controller('LandingCtrl', function($scope) {})
 
 .controller('SigninCtrl', function($scope, $state) {
@@ -39,8 +41,7 @@ $scope.login=function() {
 
   appid='FMILdtYBYwjMDL5nibDw4CCbDIrSjpmXhQtBi8Ja';
 jskey='CzbqlAl0cKKi97AkWLQIR8nCzwDk33ef8YG7v9FG';
-Parse.initialize(appid,
-                   jskey);
+Parse.initialize(appid,jskey);
   var self = this;
 
 $scope.register=function() {
@@ -138,8 +139,11 @@ p.save(null, {
       position: latLng
   });      
  
-  var infoWindow = new google.maps.InfoWindow({
+  /*var infoWindow = new google.maps.InfoWindow({
       content: "Here I am!"
+  });*/
+ var infoWindow = new google.maps.InfoWindow({
+      content: "<a href='wwww.google.com'>google</a>"
   });
  
   google.maps.event.addListener(marker, 'click', function () {
@@ -168,6 +172,11 @@ query.find().then(function(objs){
 
 
 var self = this;
+$scope.tran=function() {
+  console.log("clicked");
+  $state.go("/tab.tab2.location2");
+
+}
 
 $scope.login=function() {
   

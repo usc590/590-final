@@ -31,12 +31,59 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
   // Each state's controller can be found in controllers.js
   $stateProvider
 
-  // setup an abstract state for the tabs directive
     .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
   })
+ //Owner
+          .state('tab.tab2', {
+    url: '/tab/tab2',
+    abstract: true,
+    templateUrl: 'templates/tabs2.html'
+  })
+
+  .state('tab.tab2.location', {
+    url: '/location2',
+    views: {
+      'tab2-location': {
+        templateUrl: 'templates/tab2-location.html',
+        controller: 'Location2Ctrl'
+      }
+    }
+  })
+
+    .state('tab2.account', {
+    url: '/account2',
+    views: {
+      'tab2-account': {
+        templateUrl: 'templates/tab2-account.html',
+        controller: 'Location2Ctrl'
+      }
+    }
+  })
+
+      .state('tab2.menu', {
+    url: '/menu2',
+    views: {
+      'tab2-menu': {
+        templateUrl: 'templates/tab2-menus.html',
+        controller: 'Location2Ctrl'
+      }
+    }
+  })
+
+        .state('tab2.order', {
+    url: '/order2',
+    views: {
+      'tab2-order': {
+        templateUrl: 'templates/tab2-order.html',
+        controller: 'Location2Ctrl'
+      }
+    }
+  })
+
+        //Customer
 
       .state('landing', {
       url: '/landing',
