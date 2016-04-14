@@ -123,6 +123,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           controller: 'RegisterCtrl'
     })
 
+  .state('ownerregister', {
+      url: 'ownerregister',
+          templateUrl: 'templates/ownerRegister.html',
+          controller: 'OwnerRegisterCtrl'
+    })
+
+    .state('ownerregister2', {
+      url: 'ownerregister2',
+          templateUrl: 'templates/ownerRegister2.html',
+          controller: 'OwnerRegister2Ctrl'
+    })
+
+
 
 
   .state('tab.menus', {

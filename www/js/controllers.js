@@ -72,6 +72,44 @@ user.signUp(null, {
 }
 })
 
+.controller('OwnerRegister2Ctrl', function($scope, $state) {
+
+})
+.controller('OwnerRegisterCtrl', function($scope, $state) {
+
+  appid='FMILdtYBYwjMDL5nibDw4CCbDIrSjpmXhQtBi8Ja';
+jskey='CzbqlAl0cKKi97AkWLQIR8nCzwDk33ef8YG7v9FG';
+Parse.initialize(appid,jskey);
+  var self = this;
+
+$scope.register=function() {
+  
+  console.log(self.email);
+var user = new Parse.User();
+user.set("username", self.Email);
+user.set("password", self.Password);
+user.set("FirstName", self.FirstName);
+user.set("LastName", self.LastName);
+user.set("email", self.Email);
+user.set("AccountType", "Owner");
+
+// other fields can be set just like with Parse.Object
+//user.set("phone", "415-392-0202");
+
+user.signUp(null, {
+  success: function(user) {
+    // Hooray! Let them use the app now.
+    console.log("registered success");
+    $state.go('tab.location');
+  },
+  error: function(user, error) {
+    // Show the error message somewhere and let the user try again.
+    alert("Error: " + error.code + " " + error.message);
+  }
+});
+}
+})
+
 .controller('AddItemCtrl', function($scope, $state) {
   var self = this;
   $scope.save = function(){
@@ -143,7 +181,7 @@ p.save(null, {
       content: "Here I am!"
   });*/
  var infoWindow = new google.maps.InfoWindow({
-      content: "<a href='wwww.google.com'>google</a>"
+      content: "Store Menu: <a href='wwww.google.com'>google</a> <br \> Rating: n/a <br \> Delivery: Yes"
   });
  
   google.maps.event.addListener(marker, 'click', function () {
@@ -157,7 +195,7 @@ p.save(null, {
   });
 })
 
-.controller('AccountCtrl', function($scope, $state) {
+.controller('AccountCtrl', function($scope, $state, $ionicPopup,  $cordovaGeolocation) {
 
 appid='bvibaxG5n4qhvhhNnxlQQK5NtXtNpqQBFkr8njhu';
 jskey='7IBicVZhTUQoX90luVnWQUge617Gs7Zu2bPVrDic';
@@ -170,28 +208,61 @@ query.find().then(function(objs){
   console.log(objs.length + "icecreams");
 });
 
+  var options = {timeout: 10000, enableHighAccuracy: true};
+ 
+  $cordovaGeolocation.getCurrentPosition(options).then(function(position){
+ 
+    var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+  })
+   // When button is clicked, the popup will be shown...
+   $scope.showPopup = function() {
+      $scope.data = {}
+    
+      // Custom popup
+      var myPopup = $ionicPopup.show({
+         template: '<input type = "text" ng-model = "data.model">',
+         title: 'Title',
+         subTitle: 'Subtitle',
+         scope: $scope,
+      
+         buttons: [
+            { text: 'Cancel' }, {
+               text: '<b>Save</b>',
+               type: 'button-positive',
+                  onTap: function(e) {
+            
+                     if (!$scope.data.model) {
+                        //don't allow the user to close unless he enters model...
+                           e.preventDefault();
+                     } else {
+                        return $scope.data.model;
+                     }
+                  }
+            }
+         ]
+      });
+
+      myPopup.then(function(res) {
+         console.log('Tapped!', res);
+      });    
+   };
+
 
 var self = this;
 $scope.tran=function() {
   console.log("clicked");
-  $state.go("/tab.tab2.location2");
+  $state.go('/tab.tab2.location2');
 
 }
 
+$scope.locationOn = function() {
+  console.log("location toggled");
+
+}
 $scope.login=function() {
   
-  console.log(self.email);
-
-  Parse.User.logIn(self.email, self.password, {
-  success: function(user) {
-    // Do stuff after successful login.
-    console.log("logged in");
-    $state.go("tab.dash");
-  },
-  error: function(user, error) {
-    // The login failed. Check error to see why.
-  }
-});
+  $state.go('landing');
 
 }
 $scope.register=function() {

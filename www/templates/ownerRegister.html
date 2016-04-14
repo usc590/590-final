@@ -1,8 +1,13 @@
-<ion-view view-title="Register" ng-controller="RegisterCtrl as controller">
+<ion-view view-title="Register" ng-controller="OwnerRegisterCtrl as controller">
 	<ion-content>
-<div><p ui-sref="ownerregister">Are you a ice cream truck owner? <b>Click here</b> to register</p></div>
+<div><p>Please set up your business profiles. We need thorough information to certify your business. Your information is safe with us.</p></div>
 
 <div class="list">
+      <label class="item item-input item-stacked-label padding">
+   <span class="input-label">Section 1: Personal Profile</span>
+      </label>
+
+
    <label class="item item-input item-stacked-label padding">
    <span class="input-label">First Name</span>
    <input type="text" placeholder="First Name" ng-model="controller.FirstName">
@@ -21,6 +26,8 @@
    <input type="text" placeholder="Password" ng-model="controller.Password">
    </label>
 
+  <button class="button button-block button-calm" ng-click = "register()">Next</button> 
+<p ui-sref="landing"> Set up your profile later </p>
 <button class="button button-block button-calm" ng-click = "register()">Create Account </button>
 
 
